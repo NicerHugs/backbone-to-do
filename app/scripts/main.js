@@ -36,9 +36,18 @@ var ItemView = Backbone.View.extend({
     template: _.template($('#todo-item-template').text()),
     initialize: function() {
         this.render();
+        this.listenTo(this.model, 'destroy', function() {
+            this.remove();
+        });
     },
     render: function() {
         $('.todo-list').append(this.template(this.model.attributes));
+    },
+    events: {
+        'click .delete': 'delete'
+    },
+    delete: function() {
+        console.log('delete');
     }
 });
 
@@ -63,7 +72,7 @@ var ListView = Backbone.View.extend({
         'click #addNew': 'addNew'
     },
     addNew: function() {
-        new EditItemView(this.collection);
+        new EditItemView({collection: this.collection});
     }
 });
 
