@@ -45,10 +45,14 @@ var ItemView = Backbone.View.extend({
         this.$el.append(this.template(this.model.attributes));
     },
     events: {
-        'click .delete': 'deleteItem'
+        'click .delete'               : 'deleteItem',
+        'click input[type="checkbox"]' : 'markComplete'
     },
     deleteItem: function() {
         this.model.destroy();
+    },
+    markComplete: function() {
+        this.$el.toggleClass('complete');
     }
 });
 
