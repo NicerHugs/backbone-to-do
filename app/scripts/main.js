@@ -68,10 +68,6 @@ var ListView = Backbone.View.extend({
             this.$el.find('#bulkDelete').removeClass('hidden');
             new ItemView({model: newModel});
         });
-        this.listenTo(this.collection, 'remove', function(deletedModel){
-            var id = '#' + deletedModel.id;
-            $(id).remove();
-        });
     },
     events: {
         'click #addNew': 'addNew'
