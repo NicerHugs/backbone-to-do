@@ -37,10 +37,12 @@
     </script>
 
     <script type="text/template" id="todo-item-template">
-      <li class="todo-item">
+      <li class="todo-item" id="<%= id %>">
+        <input type="checkbox">
         <h2><%= title%></h2>
         <span>Due: <%= date %></span>
         <p><%= description %></p>
+        <button class="delete">delete</button>
       </li>
     </script>
 

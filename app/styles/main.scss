@@ -22,6 +22,10 @@ main {
   width: 50%;
 }
 
+.todo-list {
+  list-style-type: none;
+}
+
 .todo-item {
   padding: 1em;
   position: relative;
@@ -40,8 +44,11 @@ main {
     position: absolute;
     top: 40%;
     right: 10%;
-
   }
+}
+
+.complete {
+  text-decoration: line-through;
 }
 
 .edit-item {
