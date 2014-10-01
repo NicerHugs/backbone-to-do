@@ -41,13 +41,14 @@ var ItemView = Backbone.View.extend({
         });
     },
     render: function() {
-        $('.todo-list').append(this.template(this.model.attributes));
+        $('.container').append(this.el);
+        this.$el.append(this.template(this.model.attributes));
     },
     events: {
-        'click .delete': 'delete'
+        'click .delete': 'deleteItem'
     },
-    delete: function() {
-        console.log('delete');
+    deleteItem: function() {
+        this.model.destroy();
     }
 });
 
