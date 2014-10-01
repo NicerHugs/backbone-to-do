@@ -7,7 +7,11 @@
 
 var EditItemView = Backbone.Model.extend({
     tagName: 'form',
-    className: 'edit-item'
+    className: 'edit-item',
+    template: _.template($('#edit-item-template').text()),
+    render: function() {
+        
+    }
 });
 
 //==============================================================================
