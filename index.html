@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>backbone to do</title>
+
+    <link rel="icon" type="image/ico" href="/favicon.ico?v=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="styles/vendor.css">
+
+    <link rel="stylesheet" href="styles/main.css">
+
+    <script src="scripts/vendor/modernizr.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>To Do</h1>
+    </div>
+
+    <script type="text/template" id="edit-item-template">
+      <label>Title<input type="text" placeholder="Title"></label>
+      <label>Description<input type="text" placeholder="Description"></label>
+      <label>Due Date<input type="date"></label>
+      <input type='submit' value="Save">
+    </script>
+
+    <script type="text/template" id="todo-item-template">
+        <input type="checkbox">
+        <h2><%= title%></h2>
+        <span>Due: <%= date %></span>
+        <p><%= description %></p>
+        <button class="delete">delete</button>
+    </script>
+
+    <script src="scripts/vendor.js"></script>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
