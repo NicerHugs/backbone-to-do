@@ -25,9 +25,7 @@ var EditItemView = Backbone.View.extend({
             description: this.$el.find(':nth-child(2) input').val() || '',
             date: new Date(date)
         };
-        console.log(this.collection);
         var newItem = this.collection.add(new ToDoModel(data));
-        console.log(this.collection);
         this.remove();
     }
 });
@@ -36,8 +34,11 @@ var ItemView = Backbone.View.extend({
     tagName: 'li',
     className: 'todo-item',
     template: _.template($('#todo-item-template').text()),
-    render: function(){
-        $('.todo-list').append(this.template(this.model));
+    initialize: function() {
+        this.render();
+    },
+    render: function() {
+        $('.todo-list').append(this.template(this.model.attributes));
     }
 });
 
@@ -46,8 +47,23 @@ var ListView = Backbone.View.extend({
     className: 'todo-list',
     initialize: function() {
         $('.container').append(this.el);
-        console.log('the ListView collection', this.collection);
-        this.listenTo(this.collection, 'add', console.log("hi"));
+        this.$el.append('<button id="addNew" class="hidden">Add new</button>');
+        this.$el.append('<button id="bulkDelete" class="hidden">Delete Completed</button>');
+        this.listenTo(this.collection, 'add', function(newModel){
+            this.$el.find('#addNew').removeClass('hidden');
+            this.$el.find('#bulkDelete').removeClass('hidden');
+            new ItemView({model: newModel});
+        });
+        this.listenTo(this.collection, 'remove', function(deletedModel){
+            var id = '#' + deletedModel.id;
+            $(id).remove();
+        });
+    },
+    events: {
+        'click #addNew': 'addNew'
+    },
+    addNew: function() {
+        new EditItemView(this.collection);
     }
 });
 
