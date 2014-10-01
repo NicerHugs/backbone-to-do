@@ -27,8 +27,6 @@
 
     <div class="container">
       <h1>To Do</h1>
-      <form class="edit-item">
-      </form>
     </div>
 
     <script type="text/template" id="edit-item-template">
@@ -36,6 +34,14 @@
       <label>Description<input type="text" placeholder="Description"></label>
       <label>Due Date<input type="date"></label>
       <input type='submit' value="Save">
+    </script>
+
+    <script type="text/template" id="todo-item-template">
+      <li class="todo-item">
+        <h2><%= title%></h2>
+        <span>Due: <%= date %></span>
+        <p><%= description %></p>
+      </li>
     </script>
 
     <!-- build:js scripts/vendor.js -->

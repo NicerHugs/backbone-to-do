@@ -3,6 +3,10 @@
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 // Custom Styles
+.hidden {
+  display: none;
+}
+
 h1 {
   text-align: center;
 }
