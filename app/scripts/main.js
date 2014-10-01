@@ -4,13 +4,12 @@
 //==============================================================================
                                   //Views
 //==============================================================================
-
 var EditItemView = Backbone.View.extend({
     tagName: 'form',
     className: 'edit-item',
     template: _.template($('#edit-item-template').text()),
     initialize: function() {
-      this.render();},
+        this.render();},
     render: function(){
         $('.container').append(this.el);
         this.$el.append(this.template({}));
@@ -24,10 +23,11 @@ var EditItemView = Backbone.View.extend({
         var data = {
             title: this.$el.find(':first-child input').val() || '',
             description: this.$el.find(':nth-child(2) input').val() || '',
-            date: new Date(date),
-            id: Date.now()
+            date: new Date(date)
         };
-        var newItem = new ToDoModel(data);
+        console.log(this.collection);
+        var newItem = this.collection.add(new ToDoModel(data));
+        console.log(this.collection);
         this.remove();
     }
 });
@@ -46,8 +46,9 @@ var ListView = Backbone.View.extend({
     className: 'todo-list',
     initialize: function() {
         $('.container').append(this.el);
+        console.log('the ListView collection', this.collection);
         this.listenTo(this.collection, 'add', console.log("hi"));
-      }
+    }
 });
 
 //==============================================================================
@@ -63,17 +64,17 @@ var ToDoModel = Backbone.Model.extend({
 //==============================================================================
 
 var ToDoCollection = Backbone.Collection.extend({
-    model: ToDoModel
+    model: ToDoModel,
 });
 
 //==============================================================================
                                   //GLUE
 //==============================================================================
 
-$(document).ready(function(){
-    var todoList = new ToDoCollection;
-    var editItem = new EditItemView({collection: todoList});
-    var todoListView = new ListView({collection: todoList});
-});
+  $(document).ready(function(){
+      var todoList = new ToDoCollection();
+      var editItem = new EditItemView({collection: todoList});
+      var todoListView = new ListView({collection: todoList});
+  });
 
 })();
