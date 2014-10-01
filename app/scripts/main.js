@@ -11,7 +11,16 @@ var EditItemView = Backbone.View.extend({
     template: _.template($('#edit-item-template').text()),
     initialize: function() {
       this.render();},
-    render: this.template({})
+    render: function(){
+        $('.container').append(this.el);
+        this.$el.append(this.template({}));
+    },
+    events: {
+        'submit' : 'submit'
+    },
+    submit: function() {
+
+    }
 });
 
 var ItemView = Backbone.View.extend({
