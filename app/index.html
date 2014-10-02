@@ -26,25 +26,7 @@
   <body>
 
     <div class="container">
-      <h1>To Do</h1>
     </div>
-
-    <script type="text/template" id="edit-item-template">
-      <label>Title<input type="text" placeholder="Title"></label>
-      <label>Description<input type="text" placeholder="Description"></label>
-      <label>Due Date<input type="date"></label>
-      <input type='submit' value="Save">
-    </script>
-
-    <script type="text/template" id="todo-item-template">
-      <li class="todo-item" id="<%= id %>">
-        <input type="checkbox">
-        <h2><%= title%></h2>
-        <span>Due: <%= date %></span>
-        <p><%= description %></p>
-        <button class="delete">delete</button>
-      </li>
-    </script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
